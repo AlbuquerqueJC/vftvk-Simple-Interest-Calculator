@@ -6,23 +6,26 @@
         <title>NGO Interest Calculator</title>
     </head>
     <body>
-        <div class="roundedCorner">
+        <div class="maindiv">
 
             <header><h1>Simple Interest Calculator</h1></header>
 
             <form id="form" class="center">
                 <fieldset class="fieldset">
-                    <p><label for="principal">Amount:<br />
-                    <input type="number" id="principal" name="principal" value="1000000">
-                    </label></p>
+                    <!-- ADD VALIDATION -->
+                    <p><label for="principal">Amount:</label>
+                    <input type="number" id="principal" name="principal" min="1" value="1000000">
+                        <span id="error"></span>
+                    </p>
 
-                    <p><label for="rate">Rate:<br />
-                    <input type="range" min="0.10" max="65.00" value="3.5" step="0.10" size="200" class="slider" id="rate">
-                    <span id="rateValue"></span>
-                    </label></p>
+                    <p><label for="rate">Rate:</label>
+                    <input type="range" min="1" max="20" value="10.25" step="0.25" class="slider" id="rate">
+                    <span id="rate_val"></span>
+                    </p>
 
-                    <p><label for="years">No. of Years:<br />
+                    <p><label for="years">No. of Years:</label>
                     <input onfocus="this.value='';" list="yearList" name="years" id="years" value="5">
+                        <span id="yearError"></span>
                     <datalist id="yearList">
                         <option value="1">
                         <option value="2">
@@ -45,7 +48,7 @@
                         <option value="19">
                         <option value="20">
                     </datalist>
-                    </label></p>
+                    </p>
 
                     <!-- Commenting out results fields
                     <p><label for="result">Interest:<br />
@@ -55,7 +58,7 @@
                     Total : <span id="total"></span><br>
                     -->
 
-                    <button onclick="compute(); return false;">Compute Interest</button>
+                    <p><button onclick="compute(); return false;">Compute Interest</button></p>
 
                     <aside  id="textValues">
                         If you deposit <mark>1000000</mark>,<br />
@@ -67,19 +70,8 @@
 
             </form>
 
-            <footer>&copy; Everyone Can Get Rich</footer>
+            <footer>&#169; This Calculator belongs to JC Albuquerque</footer>
         </div>
 
-
-
-        <script>
-            const slider = document.getElementById("rate");
-            const output = document.getElementById("rateValue");
-            output.innerHTML = slider.value + '%';
-
-            slider.oninput = function() {
-                output.innerHTML = this.value + '%';
-            }
-        </script>
     </body>
 </html>
