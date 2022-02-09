@@ -1,16 +1,85 @@
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
     <head>
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <title>NGO Interest Calculator</title>
     </head>
     <body>
-        <h1>Simple Interest Calculator</h1>
+        <div class="roundedCorner">
 
-        Amount <input type="number"  id="principal">  <br/>
-        Rate <input type="number"  id="rate">  <br/>
-        No. of Years <input type="number"  id="years">  <br/>
-        Interest : <span id="result"></span><br>
+            <header><h1>Simple Interest Calculator</h1></header>
 
-        <button onclick="compute()">Compute</button>
+            <form id="form" class="center">
+                <fieldset class="fieldset">
+                    <p><label for="principal">Amount:<br />
+                    <input type="number" id="principal" name="principal" value="1000000">
+                    </label></p>
+
+                    <p><label for="rate">Rate:<br />
+                    <input type="range" min="0.10" max="65.00" value="3.5" step="0.10" size="200" class="slider" id="rate">
+                    <span id="rateValue"></span>
+                    </label></p>
+
+                    <p><label for="years">No. of Years:<br />
+                    <input onfocus="this.value='';" list="yearList" name="years" id="years" value="5">
+                    <datalist id="yearList">
+                        <option value="1">
+                        <option value="2">
+                        <option value="3">
+                        <option value="4">
+                        <option value="5">
+                        <option value="6">
+                        <option value="7">
+                        <option value="8">
+                        <option value="9">
+                        <option value="10">
+                        <option value="11">
+                        <option value="12">
+                        <option value="13">
+                        <option value="14">
+                        <option value="15">
+                        <option value="16">
+                        <option value="17">
+                        <option value="18">
+                        <option value="19">
+                        <option value="20">
+                    </datalist>
+                    </label></p>
+
+                    <!-- Commenting out results fields
+                    <p><label for="result">Interest:<br />
+                    <input type="number" id="result" name="result" disabled="disabled">
+                    </label></p>
+
+                    Total : <span id="total"></span><br>
+                    -->
+
+                    <button onclick="compute(); return false;">Compute Interest</button>
+
+                    <aside  id="textValues">
+                        If you deposit <mark>1000000</mark>,<br />
+                        at an interest rate of <mark>3.5%</mark>.<br />
+                        You will receive an amount of <mark>175000</mark>,<br />
+                        in the year <mark>2025</mark>
+                    </aside>
+                </fieldset>
+
+            </form>
+
+            <footer>&copy; Everyone Can Get Rich</footer>
+        </div>
+
+
+
+        <script>
+            const slider = document.getElementById("rate");
+            const output = document.getElementById("rateValue");
+            output.innerHTML = slider.value + '%';
+
+            slider.oninput = function() {
+                output.innerHTML = this.value + '%';
+            }
+        </script>
     </body>
 </html>
