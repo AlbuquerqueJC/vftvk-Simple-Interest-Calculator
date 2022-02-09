@@ -35,6 +35,7 @@ function compute()
     if (principal < 1) {
         pError.innerHTML = "Please enter a positive number";
         pError.style.display = 'block';
+        document.getElementById("principal").focus();
         return false;
     } else {
         pError.style.display = 'none';
@@ -43,6 +44,7 @@ function compute()
     if (parseFloat(years) < 1 || isNaN(years) ) {
         yError.innerHTML = "Please enter a positive number";
         yError.style.display = 'block';
+        document.getElementById("years").focus();
         return false;
     } else {
         yError.style.display = 'none';
